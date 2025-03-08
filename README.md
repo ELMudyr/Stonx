@@ -4,6 +4,8 @@
 - [x] Implement ohlc data API
 - [ ] Connect Data entry to API
 - [ ] Implement groq API
+- [ ] Add cards to home page for previous trades
+- [ ] Save to local storage
 
 # Create T3 App
 

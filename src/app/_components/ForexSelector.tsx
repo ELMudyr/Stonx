@@ -19,6 +19,7 @@ import {
 } from "./components/ui/popover";
 import { toast } from "sonner";
 import { fetchForexData } from "../../server/api/fetchForexData"; // Import fetch function
+import { fetchAiResponse } from "../../server/api/fetchAiResponse"; // Import fetch function
 
 const forexPairs = [
   { label: "EUR/USD", value: "EURUSD" },
@@ -49,10 +50,13 @@ const ForexSelector = () => {
   const handleFetchData = async () => {
     setLoading(true);
     try {
-      const result = await fetchForexData(selectedPair);
-      setData(result);
+      const chartResult = await fetchForexData(selectedPair);
+      setData(chartResult);
+
     } catch (error) {
-      toast.error(`Error: ${error || "Something went wrong!"}`);
+      toast.error("Uh oh! Something went wrong.", {
+        description: `${error || "Something went wrong!"}`
+      });
     } finally {
       setLoading(false);
     }
@@ -60,8 +64,6 @@ const ForexSelector = () => {
 
   const handlePairChange = (pair: string) => {
     setSelectedPair(pair);
-    toast(`Selected pair: ${pair}`);
-    handleFetchData(); // Automatically fetch data when pair changes
   };
 
   return (
