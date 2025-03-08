@@ -23,9 +23,6 @@ export default async function Home() {
             <div className="space-x-5">
               <ForexSelector />
             </div>
-            <div>
-              <HomeCard></HomeCard>
-            </div>
             <Toaster />
           </main>
         </HydrateClient>

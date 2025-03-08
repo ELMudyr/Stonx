@@ -7,7 +7,7 @@ import Image from "next/image"
 function Nav() {
   return (
     <>
-      <div className="w-screen h-20 bg-gradient-to-b from-muted   flex p-5 ">
+      <div className="w-screen  sticky top-0 left-0 z-20 h-20 bg-gradient-to-b from-muted   flex p-5 ">
         <div className="container flex justify-between w-screen m-auto items-center">
           <Image src={Logo} alt="logo" width={50} />
           {/* <h1 className="text-xl font-bold text-primary">C4$H</h1> */}
