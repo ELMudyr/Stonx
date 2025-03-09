@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" >
-      <body className="fontfamily-sans overflow-x-clip bg-gradient-to-br from-background to-secondary ">
+      <body className="fontfamily-sans overflow-x-hidden bg-gradient-to-br from-background to-secondary ">
         <div className="h-dvh  backdrop-blur-[100px] bg-black/10 ">
           <ThemeProvider attribute="class" defaultTheme="system" >
             <TRPCReactProvider>{children}</TRPCReactProvider>
