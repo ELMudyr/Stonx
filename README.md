@@ -2,10 +2,15 @@
 
 - [x] Add UI elements
 - [x] Implement ohlc data API
-- [ ] Connect Data entry to API
-- [ ] Implement groq API
-- [ ] Add cards to home page for previous trades
-- [ ] Save to local storage
+- [x] Connect Data entry to API
+- [x] Implement groq API
+- [x] Add cards to home page for previous trades
+- [x] Add card details page
+- [ ] Reduce Page loading time
+- [ ] Improve Landing page and background
+- [ ] Add 404 page
+- [ ] Save card history to local storage
+- [ ] Add Animations
 
 # Create T3 App
 
