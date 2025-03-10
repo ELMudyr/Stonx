@@ -1,8 +1,10 @@
 "use client";
 import Link from 'next/link';
 import { X } from 'lucide-react';
-import { TradeData } from './TradeCardList';
+import { TradeData } from './ForexSelector';
 import { Button } from './components/ui/button';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface HomeCardProps {
   tradeData: TradeData;
@@ -14,12 +16,29 @@ export default function HomeCard({ tradeData, onDelete }: HomeCardProps) {
     return <div className="p-4 text-center">No trade data available</div>;
   }
 
-  const { position, entry, takeProfit, stopLoss, description, pair, timestamp } = tradeData;
+  const { position, entry, takeProfit, stopLoss, lotSize, risk, timeEst, winRate, description, profit, id, pair, timestamp } = tradeData;
 
-  // Format takeProfit: if array, join the values; otherwise, just display it
-  // const formattedTakeProfit = Array.isArray(takeProfit)
-  //   ? takeProfit.join(", ")
-  //   : takeProfit;
+  const pairURL = tradeData.pair
+  const idURL = tradeData.id
+
+
+  // const router = useRouter();
+  //
+  // const tradeDataURL = {
+  //   pairURL: tradeData.pair,
+  //   idURL: tradeData.id,
+  // };
+  //
+  // // Construct the URL with query parameters
+  // const goToTradePage = () => {
+  //   router.push(`/trade?pair=${tradeDataURL.pairURL}&id=${tradeDataURL.idURL}`);
+  // };
+  // //
+  useEffect(() => {
+    const StorageKey = `Trade_${idURL} `
+    localStorage.setItem(StorageKey, JSON.stringify(tradeData))
+  }, [pairURL, idURL, tradeData]);
+
 
   const formattedDate = timestamp
     ? new Date(Number(timestamp)).toLocaleString()
@@ -57,7 +76,12 @@ export default function HomeCard({ tradeData, onDelete }: HomeCardProps) {
         <p className="text-xs text-muted-foreground w-64 line-clamp-2">
           {description}
         </p>
-        <Link href={`/trade-details?entry=${entry}`} className="text-xs">
+        {/* <h1 onClick={goToTradePage} >GO -{'>'}</h1> */}
+        {/* <Link href={`/trade-details?pair=${pairURL}&id=${idURL}`} className="text-xs"> */}
+        {/*   Expand {'->'} */}
+        {/* </Link> */}
+
+        <Link href={`/trade-details/${idURL}`} className="text-xs">
           Expand {'->'}
         </Link>
       </div>

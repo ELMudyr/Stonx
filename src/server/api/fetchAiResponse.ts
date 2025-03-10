@@ -16,14 +16,16 @@ export async function fetchAiResponse(chartResult: any) {
           
 Analyze the data provided and only provide a response if you're sure that the trade is profitable, or else respond with a few lines stating when to enter, keeping in mind other market openings and the date which might impact the price's volatility.
 
+You are in no position to feel obligated to suggest a trade, if you see that the data is not enought for analysis or the investor should wait for a specific break through before taking the trade respond in the description section.
+
 Respond in JSON format providing:
-- Position (Long or Short)
+- Position (either Long or Short based on chart history)
 - Entry Point
 - Take Profit
 - Stop Loss
 - Lot size (Exact number to be entered in Metatrader)
 - Risk %
-- TimeEst (Time estimated in hours to reach the TP)
+- TimeEst (Time estimated in hours to reach the TP preferably 1hour)
 - Winrate % (Estimated % to achieve the TP based on the analysis)
 - Description (a few lines detailing what made you take the position)
 - Profit$ (Estimated Profit in USD)`,
@@ -33,7 +35,7 @@ Respond in JSON format providing:
           content: JSON.stringify(chartResult.quotes),
         },
       ],
-      model: 'deepseek-r1-distill-llama-70b',
+      model: "deepseek-r1-distill-llama-70b",
       temperature: 0.6,
       max_completion_tokens: 4096,
       top_p: 0.95,

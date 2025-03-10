@@ -8,7 +8,7 @@ export const fetchForexData = async (selectedPair: string): Promise<any> => {
 
   const now = new Date();
   const past3Days = new Date(now);
-  past3Days.setUTCDate(now.getUTCDate() - 3);
+  past3Days.setUTCDate(now.getUTCDate() - 4);
   past3Days.setUTCHours(0, 0, 0, 0);
 
   const formatDate = (date: Date) =>
@@ -20,7 +20,7 @@ export const fetchForexData = async (selectedPair: string): Promise<any> => {
   if (!apiKey) {
     throw new Error("API key is missing. Please check your environment variables.");
   }
-  const url = `${baseUrl}?api_key=${apiKey}&currency=${selectedPair}&format=records&start_date=${startDate}&end_date=${endDate}&interval=minute&period=15`;
+  const url = `${baseUrl}?api_key=${apiKey}&currency=${selectedPair}&format=records&start_date=${startDate}&end_date=${endDate}&interval=minute&period=30`;
 
   try {
     const response = await fetch(url);

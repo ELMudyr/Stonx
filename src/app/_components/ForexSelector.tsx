@@ -3,6 +3,8 @@ import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "./components/lib/utils";
 import { Button } from "./components/ui/button";
+// import SaveToStorage, { SaveToStorageHandle } from "./SaveToStorage"; // Import SaveToStorage
+
 import {
   Command,
   CommandEmpty,
@@ -65,13 +67,15 @@ interface ForexSelectorProps {
 const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick }) => {
   const [selectedPair, setSelectedPair] = React.useState("EURUSD");
   const [buttonLoading, setButtonLoading] = React.useState(false);
+  // const storageRef = React.useRef<SaveToStorageHandle>(null);
 
   // Handle fetching forex data and processing AI response
   const handleFetchData = async () => {
     // Call the onFetchClick callback FIRST to set loading state
     onFetchClick();
 
-    setButtonLoading(true); try {
+    setButtonLoading(true);
+    try {
       const apiResult = await fetchForexData(selectedPair);
       if (apiResult) {
         // Map the API response keys to your expected TradeData keys
@@ -90,6 +94,9 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
           timestamp: Date.now(),
           pair: selectedPair,
         };
+
+        // Save trade data to localStorage
+        // storageRef.current?.addTrade(mappedTradeData); // Save trade to localStorage
 
         // This will trigger setting loading to false after data is received
         onTradeData(mappedTradeData);
@@ -190,6 +197,7 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
       >
         {buttonLoading ? "Loading..." : "Fetch Data"}
       </Button>
+      {/* <SaveToStorage ref={storageRef} /> */}
     </div>
   );
 };
