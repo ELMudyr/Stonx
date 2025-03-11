@@ -22,6 +22,7 @@ const getQueryClient = () => {
 
 export const api = createTRPCReact<AppRouter>();
 
+
 /**
  * Inference helper for inputs.
  *
@@ -48,7 +49,6 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
             (op.direction === "down" && op.result instanceof Error),
         }),
         unstable_httpBatchStreamLink({
-          transformer: SuperJSON,
           url: getBaseUrl() + "/api/trpc",
           headers: () => {
             const headers = new Headers();
