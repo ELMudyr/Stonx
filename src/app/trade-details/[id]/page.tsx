@@ -66,7 +66,7 @@ export default function Page() {
           </Link>
           <Card />
         </div>
-        <div className="grid w-fit bg-card border rounded-xl shadow px-6 py-4 gap-5">
+        <div className=" w-fit bg-card border rounded-xl shadow px-6 py-4 space-y-5">
           <div className="flex  items-center justify-between">
             <div className="flex flex-col ">
               <p className="text-xs text-muted-foreground">{formattedDate}</p>
