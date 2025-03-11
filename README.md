@@ -7,6 +7,7 @@
 - [x] Add cards to home page for previous trades
 - [x] Add card details page
 - [ ] Reduce Page loading time
+- [ ] Add trading view chart
 - [ ] Improve Landing page and background
 - [ ] Add 404 page
 - [ ] Save card history to local storage
