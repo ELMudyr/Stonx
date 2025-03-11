@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { env } from "~/env.js";
+import { env } from "../..//env.js";
 import { fetchAiResponse } from "./fetchAiResponse";
 
 export const fetchForexData = async (selectedPair: string): Promise<any> => {

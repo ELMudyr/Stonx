@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { TradeData } from './ForexSelector';
 import { Button } from './components/ui/button';
 import { useEffect } from 'react';
+import React from 'react';
 
 interface HomeCardProps {
   tradeData: TradeData;

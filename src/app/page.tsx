@@ -1,15 +1,9 @@
-import { HydrateClient } from "~/trpc/server";
-import ForexSelector from "./_components/ForexSelector";
-import HomeCard from "./_components/HomeCard";
 import { ThemeProvider } from "next-themes";
-import { ModeToggle } from "./_components/components/ui/modeToggle";
 import Nav from "./_components/components/ui/Nav";
-import { Button } from "./_components/components/ui/button";
-import { ComboboxForm } from "./_components/components/ui/pairSelect";
 import { Toaster } from "sonner";
-// import { CardSkeleton } from "./_components/components/ui/cardSkeleton";
 import ForexTradeContainer from "./_components/ForexTradeContainer";
 import CardAnimation from "./_components/components/animations/cardAnimation";
+import React from "react";
 
 
 export default async function Home() {

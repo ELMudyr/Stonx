@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import Nav from "~/app/_components/components/ui/Nav";
+import Nav from "../../_components/components/ui/Nav";
 import { toast, Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { useParams } from "next/navigation"
-import { TradeData } from "~/app/_components/ForexSelector";
+import { TradeData } from "../../_components/ForexSelector";
 import { useEffect, useState } from "react";
-import { Card } from "~/app/_components/components/ui/card";
+import { Card } from "../../_components/components/ui/card";
+import React from "react";
 
 
 export default function Page() {

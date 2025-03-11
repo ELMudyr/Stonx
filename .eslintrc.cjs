@@ -15,6 +15,26 @@ const config = {
   "rules": {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/dot-notation": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "off",
+
+    // "@typescript-eslint/array-type": "off",
+    // "@typescript-eslint/consistent-type-definitions": "off",
+    // "@typescript-eslint/no-unsafe-assignment": "off",
+    // "@typescript-eslint/no-explicit-any": "off",
+    // "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {

@@ -30,6 +30,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./popover"
+import React from "react"
 
 const forexPairs = [
   { label: "EUR/USD", value: "EURUSD" },

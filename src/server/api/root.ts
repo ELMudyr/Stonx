@@ -1,11 +1,5 @@
-import { postRouter } from "~/server/api/routers/post";
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
-import { initTRPC } from "@trpc/server";
-import SuperJSON from "superjson";
-
-export const t = initTRPC.create({
-  transformer: SuperJSON, // Ensure the transformer is set here
-});
+import { postRouter } from "./routers/post";
+import { createCallerFactory, createTRPCRouter } from "./trpc";
 
 /**
  * This is the primary router for your server.

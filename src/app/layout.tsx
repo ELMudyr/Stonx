@@ -2,8 +2,9 @@ import "~/styles/globals.css";
 
 import { type Metadata } from "next";
 
-import { TRPCReactProvider } from "~/trpc/react";
+import { TRPCReactProvider } from "../trpc/react";
 import { ThemeProvider } from "next-themes";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Stonx WebApp",
