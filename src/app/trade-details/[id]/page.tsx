@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Nav from "../../_components/components/ui/Nav";
 import { toast, Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { useParams } from "next/navigation"
@@ -33,7 +32,13 @@ export default function Page() {
     }
   }, []);
   if (!tradeData) {
-    return <div>Loading...</div>;
+    return (
+
+      <div className="flex flex-col items-center justify-center gap-3 mt-56">
+        <h1 className="text-foreground text-center font-bold text-xl">oops, Seems that there is nothing here....</h1>
+        <Link href="/" className="bg-card rounded-xl shadow px-3 py-1 text-muted-foreground hover:text-primary">Return Home?</Link>
+      </div>
+    )
   }
 
   const {
@@ -60,7 +65,6 @@ export default function Page() {
 
     <ThemeProvider>
       <main className="flex h-screen w-full overflow-x-hidden flex-col items-center ">
-        <Nav />
         <div className="container flex  items-center   text-center gap-2 px-4 py-16">
           <Link href="/" className="text-xs">
             {'<-'} Go Back
