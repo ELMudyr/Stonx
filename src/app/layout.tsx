@@ -5,6 +5,8 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "../trpc/react";
 import { ThemeProvider } from "next-themes";
 import React from "react";
+import Nav from "./_components/components/ui/Nav";
+import ParticleBackground from "./_components/components/animations/ParticleBackground";
 
 export const metadata: Metadata = {
   title: "Stonx WebApp",
@@ -17,12 +19,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" >
-      <body className="fontfamily-sans overflow-x-hidden bg-gradient-to-br from-background to-secondary ">
-        <div className="h-dvh  backdrop-blur-[100px] bg-black/10 ">
-          <ThemeProvider attribute="class" defaultTheme="system" >
-            <TRPCReactProvider>{children}</TRPCReactProvider>
-          </ThemeProvider>
-        </div>
+      <body className="fontfamily-sans overflow-x-clip  ">
+        {/* <div className="h-dvh flex flex-col  backdrop-blur-[100px] bg-black/10 "> */}
+        <ThemeProvider attribute="class" defaultTheme="system" >
+          <Nav />
+          <ParticleBackground />
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </ThemeProvider>
+        {/* </div> */}
       </body >
     </html >
   );
