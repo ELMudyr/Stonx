@@ -7,6 +7,8 @@ import { ThemeProvider } from "next-themes";
 import React from "react";
 import Nav from "./_components/components/ui/Nav";
 import ParticleBackground from "./_components/components/animations/ParticleBackground";
+import { StarsBackground } from "./_components/components/animations/StarsBackground";
+import AnimatedBackground from "./_components/components/animations/bg-animation";
 
 export const metadata: Metadata = {
   title: "Stonx WebApp",
@@ -19,14 +21,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" >
-      <body className="fontfamily-sans overflow-x-clip  ">
-        {/* <div className="h-dvh flex flex-col  backdrop-blur-[100px] bg-black/10 "> */}
+      <body className="fontfamily-sans  overflow-x-clip h-screen  ">
         <ThemeProvider attribute="class" defaultTheme="system" >
           <Nav />
-          <ParticleBackground />
+          {/* <StarsBackground /> */}
           <TRPCReactProvider>{children}</TRPCReactProvider>
+          <AnimatedBackground />
         </ThemeProvider>
-        {/* </div> */}
       </body >
     </html >
   );
