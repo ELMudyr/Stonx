@@ -21,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" >
-      <body className="fontfamily-sans  overflow-x-clip h-screen  ">
+      <body className="fontfamily-sans  overflow-x-hidden h-screen  ">
         <ThemeProvider attribute="class" defaultTheme="system" >
           <Nav />
           {/* <StarsBackground /> */}

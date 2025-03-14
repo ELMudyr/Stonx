@@ -20,6 +20,13 @@ export default async function Home() {
           <div className="space-x-5 space-y-5 overflow-x-hidden">
             {/* <ForexSelector /> */}
             <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
+            <ForexTradeContainer />
           </div>
 
         </main>
