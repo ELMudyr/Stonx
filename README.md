@@ -6,11 +6,12 @@
 - [x] Implement groq API
 - [x] Add cards to home page for previous trades
 - [x] Add card details page
+- [x] Fix Overflow on toast
 - [ ] Reduce Page loading time
 - [ ] Add trading view chart
 - [ ] Improve Landing page and background
-- [ ] Add 404 page
-- [ ] Save card history to local storage
+- [x] Add 404 page
+- [x] Save card history to local storage
 - [ ] Add Animations
 
 # Create T3 App

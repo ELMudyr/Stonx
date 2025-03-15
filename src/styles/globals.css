@@ -61,6 +61,13 @@
   }
 }
 
+body {
+  min-height: 100%;
+  background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
+    linear-gradient(to bottom, #80808012 1px, transparent 1px);
+  background-size: 124px 124px;
+}
+
 
 @layer base {
   * {

@@ -27,47 +27,6 @@ const forexCryptoIcons = [
   LineChart
 ];
 
-// Floating animation for icons
-const floatingVariants = {
-  initial: { opacity: 0, y: 10, scale: 0.7 },
-  animate: (i: number) => ({
-    opacity: [0, 1, 1, 0],
-    y: [10, -10, 5, 0],
-    scale: [0.7, 1, 0.9, 1],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      delay: i * 0.8,
-      ease: "easeInOut",
-    },
-  }),
-};
-
-// Background gradient and animated lines (existing tailwind classes)
-const backgroundStyles = `
-  before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r 
-  before:from-bg-accent before:via-bg-background before:to-bg-accent 
-  before:opacity-70
-  after:content-[''] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.07),_transparent)]
-`;
-
-// Grid background style using CSS repeating linear gradients
-// const gridBackgroundStyle = {
-//   backgroundImage: `
-//     repeating-linear-gradient(
-//       to bottom,
-//       transparent,
-//       transparent 39px,
-//       rgba(255,255,255,0.3) 40px
-//     ),
-//     repeating-linear-gradient(
-//       to right,
-//       transparent,
-//       transparent 39px,
-//       rgba(255,255,255,0.2) 40px
-//     )
-//   `,
-// };
 
 // Define the type for our chart data
 interface CandleData {
@@ -146,36 +105,13 @@ const AnimatedBackground = () => {
 
   return (
     // The outer container now uses a grid background that spans the entire page.
-    <div
-      className={`absolute inset-0 overflow-x-hidden -z-20 h-full w-full `}
+    <>
+      <div
+        className={`absolute  overflow-x-hidden -z-20 h-screen bg-gradient-to-b from-background/80 to-transparent  top-0 w-full `}>
 
-    >
-      <div className="relative h-full w-full  bg-background/70">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_64px]"></div>
-      </div>
-
-      {/* Chart line connecting closes */}
-      {/* <svg className="absolute inset-0 w-full h-full"> */}
-      {/*   {chartData.length > 0 && ( */}
-      {/*     <motion.path */}
-      {/*       d={`M0,${100 - (chartData[0]?.close ?? 0)} ${chartData */}
-      {/*         .map( */}
-      {/*           (point: CandleData, i: number): string => */}
-      {/*             `L${i * candleWidth + candleWidth}%,${100 - (point.close ?? 0)}` */}
-      {/*         ) */}
-      {/*         .join(" ")}`} */}
-      {/*       fill="none" */}
-      {/*       stroke="text-muted-foreground" */}
-      {/*       strokeWidth="9" */}
-      {/*       initial={{ pathLength: 0 }} */}
-      {/*       animate={{ pathLength: 1 }} */}
-      {/*       transition={{ duration: 10, repeat: Infinity, ease: "linear" }} */}
-      {/*     /> */}
-      {/*   )} */}
-      {/* </svg> */}
-
+      </div >
       {/* Candlesticks container */}
-      <div className="absolute -z-50 top-56 left-0 w-full h-40">
+      <div className="absolute -z-50 top-56 left-0 bg-background/20 w-full h-40">
         {chartData.map((candle, i) => {
           const bodyTopOriginal = 100 - Math.max(candle.open, candle.close);
           const bodyBottomOriginal = 100 - Math.min(candle.open, candle.close);
@@ -202,10 +138,10 @@ const AnimatedBackground = () => {
               }}
               animate={{ y: [0, -8, 0] }}
               transition={{
-                duration: 5,
+                duration: 4.5,
                 repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.23
+                ease: [0.42, 0, 0.58, 1],
+                delay: i * 0.15,
               }}
             >
               {/* Candle Body */}
@@ -248,8 +184,29 @@ const AnimatedBackground = () => {
         })}
       </div>
 
-      {/* Floating forex & crypto icons */}
+    </>
+  );
+};
+
+export const BackgroundGrid = () => {
+  const floatingVariants = {
+    initial: { opacity: 0, y: 10, scale: 0.7 },
+    animate: (i: number) => ({
+      opacity: [0, 1, 1, 0],
+      y: [10, -10, 5, 0],
+      scale: [0.7, 1, 0.9, 1],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        delay: i * 0.8,
+        ease: "easeInOut",
+      },
+    }),
+  };
+  return (
+    <>
       {
+        // Floating animation for icons
         forexCryptoIcons.map((Icon, i) => (
           <motion.div
             key={i}
@@ -267,8 +224,7 @@ const AnimatedBackground = () => {
           </motion.div>
         ))
       }
-    </div >
-  );
-};
-
+    </>
+  )
+}
 export default AnimatedBackground;
