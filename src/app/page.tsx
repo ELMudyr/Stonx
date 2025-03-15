@@ -19,7 +19,7 @@ export default async function Home() {
             <h2 className="text-sm md:lg text-primary">Or Gamble instead... :)</h2>
             <AnimatedBackground />
           </div>
-          <div className="space-x-5 space-y-5 overflow-x-hidden">
+          <div className="space-x-5   space-y-5 overflow-x-hidden">
             <ForexTradeContainer />
           </div>
         </main>
