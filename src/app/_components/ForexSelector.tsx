@@ -146,7 +146,7 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center mb-14">
       <Popover>
         <PopoverTrigger asChild>
           <Button

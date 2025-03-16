@@ -35,7 +35,7 @@ export default function HomeCard({ tradeData, onDelete }: HomeCardProps) {
   const pairDisplay = pair || "Unknown pair";
 
   return (
-    <div className="bg-card border scrollbar-hide rounded-xl shadow px-6 py-4 relative">
+    <div className="bg-card border w-screen md:max-w-fit scrollbar-hide rounded-xl shadow px-6 py-4 relative">
       {onDelete && (
         <Button
           variant="ghost"

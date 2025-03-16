@@ -46,12 +46,11 @@ const ForexTradeContainer = () => {
         onFetchClick={handleFetchClick}
       />
 
-      {/* Pass savedTrades and clearSavedTrades as props to ClearCards */}
-      <ClearCards savedTrades={savedTrades} clearSavedTrades={clearSavedTrades} />
+      <div className="grid lg:grid-cols-2 container gap-8 mt-8 items-center w-screen justify-items-stretch">
 
-      <HandleCardDisplay tradeData={trades} loading={loading} />
-
-      <div className="absolute top-0 z-50 w-1/2  h-1/2">
+        <div className="w-fit flex flex-col self-start  justify-self-center">
+          <HandleCardDisplay tradeData={trades} loading={loading} />
+        </div>
         <TradingViewChart />
       </div>
       {/* <Chart /> */}

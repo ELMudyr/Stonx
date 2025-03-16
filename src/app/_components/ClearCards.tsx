@@ -14,7 +14,7 @@ const ClearCards: React.FC<ClearCardsProps> = ({ savedTrades, clearSavedTrades }
     <Button
       variant="outline"
       onClick={clearSavedTrades}
-      className="w-fit px-4 self-end mr-3"
+      className="w-fit m-0 px-4 self-end "
     >
       Clear <FaRegTrashAlt />
     </Button>
