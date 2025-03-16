@@ -4,6 +4,8 @@ import * as React from "react";
 import ForexSelector, { TradeData } from "./ForexSelector";
 import HandleCardDisplay from "./HandleCardDisplay";
 import ClearCards from "./ClearCards";
+import { Chart, ChartComponent } from "./Chart";
+import TradingViewChart from "./TradingViewChart";
 
 const ForexTradeContainer = () => {
   const [trades, setTrades] = React.useState<TradeData[]>([]);
@@ -38,7 +40,7 @@ const ForexTradeContainer = () => {
   }, []);
 
   return (
-    <div className="space-y-6 overflow-y-hidden flex flex-col items-center">
+    <div className=" overflow-y-hidden flex flex-col items-center">
       <ForexSelector
         onTradeData={handleNewTradeData}
         onFetchClick={handleFetchClick}
@@ -48,6 +50,11 @@ const ForexTradeContainer = () => {
       <ClearCards savedTrades={savedTrades} clearSavedTrades={clearSavedTrades} />
 
       <HandleCardDisplay tradeData={trades} loading={loading} />
+
+      <div className="absolute top-0 z-50 w-1/2  h-1/2">
+        <TradingViewChart />
+      </div>
+      {/* <Chart /> */}
     </div>
   );
 };

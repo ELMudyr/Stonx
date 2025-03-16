@@ -13,6 +13,7 @@
 - [x] Add 404 page
 - [x] Save card history to local storage
 - [ ] Add Animations
+- [ ] Limit Cards display
 
 # Create T3 App
 
