@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CardSkeleton() {
   return (
-    <div className="bg-card border rounded-xl shadow px-6 py-4 relative animate-pulse">
+    <div className="bg-card border  rounded-xl shadow px-6 py-4  animate-pulse">
       <div className="h-4 w-24 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
       <div className="h-6 w-48 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
       <div className="flex justify-between">

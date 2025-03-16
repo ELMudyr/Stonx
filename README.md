@@ -8,12 +8,12 @@
 - [x] Add card details page
 - [x] Fix Overflow on toast
 - [ ] Reduce Page loading time
-- [ ] Add trading view chart
+- [x] Add trading view chart
 - [ ] Improve Landing page and background
 - [x] Add 404 page
 - [x] Save card history to local storage
 - [ ] Add Animations
-- [ ] Limit Cards display
+- [x] Limit Cards display
 
 # Create T3 App
 
