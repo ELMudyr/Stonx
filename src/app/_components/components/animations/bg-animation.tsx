@@ -83,11 +83,11 @@ const AnimatedBackground = () => {
 
   // State for candle count based on screen size.
   const [candleCount, setCandleCount] = useState(100);
-
+  //
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 874) {
-        setCandleCount(20);
+        setCandleCount(30);
       } else {
         setCandleCount(100);
       }
@@ -111,7 +111,7 @@ const AnimatedBackground = () => {
 
       </div >
       {/* Candlesticks container */}
-      <div className="absolute -z-50 top-56 left-0 bg-background/20 w-full h-40">
+      <div className="absolute -z-50 top-28  bg-background/20 w-2/3 m-auto h-48">
         {chartData.map((candle, i) => {
           const bodyTopOriginal = 100 - Math.max(candle.open, candle.close);
           const bodyBottomOriginal = 100 - Math.min(candle.open, candle.close);
@@ -205,25 +205,27 @@ export const BackgroundGrid = () => {
   };
   return (
     <>
-      {
-        // Floating animation for icons
-        forexCryptoIcons.map((Icon, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-muted-foreground"
-            variants={floatingVariants}
-            initial="initial"
-            animate="animate"
-            custom={i}
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`
-            }}
-          >
-            <Icon size={14} />
-          </motion.div>
-        ))
-      }
+      <div className="overflow-hidden -z-40 absolute h-screen w-screen top-0 left-0">
+        {
+          // Floating animation for icons
+          forexCryptoIcons.map((Icon, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-muted-foreground"
+              variants={floatingVariants}
+              initial="initial"
+              animate="animate"
+              custom={i}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`
+              }}
+            >
+              <Icon size={14} />
+            </motion.div>
+          ))
+        }
+      </div>
     </>
   )
 }
