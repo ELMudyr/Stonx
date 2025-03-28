@@ -7,6 +7,7 @@ import { TradeData } from "../../_components/ForexSelector";
 import { useEffect, useState } from "react";
 import { Card } from "../../_components/components/ui/card";
 import React from "react";
+import TradingViewChart from "~/app/_components/TradingViewChart";
 
 
 export default function Page() {
@@ -71,8 +72,8 @@ export default function Page() {
           </Link>
           <Card />
         </div>
-        <div className=" w-fit bg-card border rounded-xl shadow px-6 py-4 space-y-5">
-          <div className="flex  items-center justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-[150px,auto,auto] sm:grid-rows-4  w-3/4  justify-center pb-32  gap-4">
+          <div className="sm:col-start-4 h-fit sm:h-auto flex justify-between sm:block justify-self-strech  bg-card border rounded-xl shadow px-6 py-4 space-y-5">
             <div className="flex flex-col ">
               <p className="text-xs text-muted-foreground">{formattedDate}</p>
               <h1 className="text-lg">
@@ -83,21 +84,26 @@ export default function Page() {
                 <h1 className=" text-xs text-muted-foreground font-bold">Time to TP: {tradeData.timeEst}h</h1>
                 <h1 className=" text-xs text-muted-foreground font-bold">Profit Rate: {tradeData.winRate}%</h1>
                 <h1 className=" text-xs text-muted-foreground font-bold">Estimated Profit: {tradeData.profit}$</h1>
+                <h1 className=" text-xs text-muted-foreground font-bold">Risk: {tradeData.risk}%</h1>
               </div>
             </div>
-            <div className=" flex flex-col items-end">
-              <h1 className="text-chart-2 text-sm font-bold">TP: {tradeData.takeProfit.toString()}</h1>
-              <h1 className="text-ring text-sm font-bold">SL: {tradeData.stopLoss}</h1>
-              <h1 className=" text-sm text-muted-foreground font-bold">EN: {tradeData.entry}</h1>
-              <h1 className=" text-sm text-muted-foreground font-bold">LS: {tradeData.lotSize}</h1>
-              <h1 className=" text-xs text-muted-foreground font-bold">Risk: {tradeData.risk}%</h1>
+            <div className=" flex flex-col self-end items-end text-xs sm:text-md">
+              <h1 className="text-chart-2  font-bold">Take Profit: {tradeData.takeProfit.toString()}</h1>
+              <h1 className="text-ring  font-bold">Stop Loss: {tradeData.stopLoss}</h1>
+              <h1 className="  text-muted-foreground font-bold">Entry: {tradeData.entry}</h1>
+              <h1 className="  text-muted-foreground font-bold">Lot Size: {tradeData.lotSize}</h1>
             </div>
           </div>
-          <div className="flex gap-24 items-center justify-between w-fit">
-            <p className="text-sm  text-muted-foreground  max-w-[30rem]">
+          <div className="sm:col-span-3 sm:row-start-1 row-start-2 w-fit self-strech  bg-card border rounded-xl shadow px-6 py-4 space-y-4">
+            <h1>Description: </h1>
+            <p className="  text-muted-foreground text-xs sm:text-md ">
               {tradeData.description}
             </p>
           </div>
+          <div className="sm:col-span-4 sm:row-start-2 row-span-3 ">
+            <TradingViewChart selectedPair={tradeData.pair || "EURUSD"} />
+          </div>
+
         </div>
         <Toaster />
       </main>
