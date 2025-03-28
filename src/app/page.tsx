@@ -1,10 +1,7 @@
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import ForexTradeContainer from "./_components/ForexTradeContainer";
-import CardAnimation from "./_components/components/animations/cardAnimation";
 import React from "react";
-import ParticleBackground from "./_components/components/animations/ParticleBackground";
-import StaggerAnimation from "./_components/components/animations/staggerAnimation";
 import AnimatedBackground from "./_components/components/animations/bg-animation";
 
 
