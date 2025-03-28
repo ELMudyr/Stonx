@@ -37,7 +37,7 @@ export type TradeData = {
   pair?: string;
 };
 
-const forexPairs = [
+export const forexPairs = [
   { label: "EUR/USD", value: "EURUSD" },
   { label: "USD/JPY", value: "USDJPY" },
   { label: "GBP/USD", value: "GBPUSD" },
@@ -77,22 +77,38 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
       const apiResult = await fetchForexData(selectedPair);
       if (apiResult) {
         // Map the API response keys to your expected TradeData keys
+        // const mappedTradeData: TradeData = {
+        //   position: apiResult.Position || "N/A",
+        //   entry: apiResult["Entry Point"] || 0,
+        //   takeProfit: apiResult["Take Profit"] || 0,
+        //   stopLoss: apiResult["Stop Loss"] || 0,
+        //   lotSize: apiResult["Lot size"] || 0,
+        //   risk: apiResult["Risk %"] || 0,
+        //   timeEst: apiResult.TimeEst || 0,
+        //   winRate: apiResult["Winrate %"] || 0,
+        //   description: apiResult.Description || "No description available",
+        //   profit: apiResult["Profit$"] || 0,
+        //   id: Date.now().toString(),
+        //   timestamp: Date.now(),
+        //   pair: selectedPair,
+        // };
+
         const mappedTradeData: TradeData = {
-          position: apiResult.Position || "N/A",
-          entry: apiResult["Entry Point"] || 0,
-          takeProfit: apiResult["Take Profit"] || 0,
-          stopLoss: apiResult["Stop Loss"] || 0,
-          lotSize: apiResult["Lot size"] || 0,
-          risk: apiResult["Risk %"] || 0,
-          timeEst: apiResult.TimeEst || 0,
-          winRate: apiResult["Winrate %"] || 0,
-          description: apiResult.Description || "No description available",
-          profit: apiResult["Profit$"] || 0,
+          position: apiResult.position || "N/A",
+          entry: apiResult.entry || 0,
+          takeProfit: apiResult.takeProfit || 0,
+          stopLoss: apiResult.stopLoss || 0,
+          lotSize: apiResult.lotSize || 0,
+          risk: apiResult.risk || 0,
+          timeEst: apiResult.timeEst || 0,
+          winRate: apiResult.winRate || 0,
+          description: apiResult.description || "No description available",
+          profit: apiResult.profitUSD || 0,
           id: Date.now().toString(),
           timestamp: Date.now(),
           pair: selectedPair,
         };
-
+        console.log(apiResult)
         // This will trigger setting loading to false after data is received
         onTradeData(mappedTradeData);
 
