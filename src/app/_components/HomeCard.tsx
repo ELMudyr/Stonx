@@ -35,17 +35,7 @@ export default function HomeCard({ tradeData, onDelete }: HomeCardProps) {
   const pairDisplay = pair || "Unknown pair";
 
   return (
-    <div className="bg-card border w-screen md:max-w-fit scrollbar-hide rounded-xl shadow px-6 py-4 relative">
-      {onDelete && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-5 w-5 absolute top-0 right-0 text-muted-foreground hover:text-destructive"
-          onClick={onDelete}
-        >
-          <X className="h-4 w-4" />
-        </Button>
-      )}
+    <div className="bg-card border w-screen sm:max-w-fit scrollbar-hide rounded-xl shadow px-6 py-4 relative">
 
       <div className="flex gap-24 items-center justify-between">
         <div>

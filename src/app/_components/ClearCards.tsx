@@ -1,14 +1,14 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { Button } from "./components/ui/button"; // Assuming you're using a UI library for button styles
+import { Button } from "./components/ui/button";
 
 interface ClearCardsProps {
-  savedTrades: any[];  // Array of trades (you can be more specific with the type here)
+  savedTrades: any[];
   clearSavedTrades: () => void;
 }
 
 const ClearCards: React.FC<ClearCardsProps> = ({ savedTrades, clearSavedTrades }) => {
-  if (savedTrades.length === 0) return null; // If no saved trades, don't render the button
+  if (savedTrades.length === 0) return null;
 
   return (
     <Button

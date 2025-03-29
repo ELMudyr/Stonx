@@ -42,20 +42,25 @@ const HandleCardDisplay: React.FC<HandleCardDisplayProps> = ({
   // Function to clear saved trades from both localStorage and state
   const clearSavedTrades = () => {
     localStorage.removeItem(STORAGE_KEY); // Remove saved trades from localStorage
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith("Trade_")) {
+        localStorage.removeItem(key);
+      }
+    });
     setSavedTrades([]); // Clear the state
   };
 
   return (
     <CardAnimation>
-      <div className="space-y-4 max-h-[500px] overflow-y-scroll inset-shadow-red-500 inset-shadow-sm w-screen md:max-w-fit flex  flex-col">
+      <div className="space-y-4 max-h-[500px] overflow-y-scroll inset-shadow-red-500 inset-shadow-sm w-screen sm:max-w-fit flex  flex-col">
         {/* Pass savedTrades and clearSavedTrades to the ClearButton */}
         <div className="sticky top-0 ml-auto z-10 ">
           <ClearCards savedTrades={savedTrades} clearSavedTrades={clearSavedTrades} />
         </div>
-        <div className="space-y-4 md:max-w-fit w-screen overflow-x-hidden">
+        <div className="space-y-4 max-w-fit  overflow-x-hidden">
           {loading && <CardSkeleton />}
           {/* Render HomeCard components */}
-          {savedTrades.map((trade) => (
+          {savedTrades.slice().reverse().map((trade) => (
             <HomeCard key={trade.id} tradeData={trade} />
           ))}
         </div>

@@ -22,11 +22,11 @@ const ForexTradeContainer = () => {
     setLoading(false);
   };
 
-  // Function to clear saved trades from both localStorage and state
-  const clearSavedTrades = () => {
-    localStorage.removeItem("SavedTrades"); // Remove saved trades from localStorage
-    setSavedTrades([]); // Clear the state
-  };
+  // // Function to clear saved trades from both localStorage and state
+  // const clearSavedTrades = () => {
+  //   localStorage.removeItem("SavedTrades"); // Remove saved trades from localStorage
+  //   setSavedTrades([]); // Clear the state
+  // };
 
   // Load saved trades from localStorage
   React.useEffect(() => {
