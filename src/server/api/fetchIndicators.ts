@@ -38,29 +38,12 @@ export default async function fetchIndicators(selectedPair: string) {
     });
 
     // console.log(JSON.stringify(results.data, null, 2))
-    return (JSON.stringify(results.data, null, 2))
+    return results.data
+    // console.log(results.data.data.rsi.response.code)
+    // (JSON.stringify(results.data, null, 2))
   } catch (error) {
     console.error('Error:', error);
   }
 
-  //
-  //
-  // console.log("API: " + polygonAPI)
-  // taapi.resetBulkConstructs();
-  // taapi.setProvider("polygon", polygonAPI)
-  //
-  // // Add calculations
-  // taapi.addCalculation("rsi", "EUR/USD", "1d", "rsi_1h");
-  // // taapi.addCalculation("macd", pair, "1h", "macd_1h");
-  // // taapi.addCalculation("ema", pair, "1h", "ema_fast_1h", { period: 9, backtrack: 1 });
-  // // taapi.addCalculation("ema", pair, "1h", "ema_slow_1h", { period: 20, backtrack: 1 });
-  // try {
-  //   taapi.executeBulk("forex").then(results => {
-  //     console.log(results);
-  //   });
-  // }
-  // catch (error) {
-  //   console.error("Indicator Error: " + error.response.data)
-  // }
 }
 

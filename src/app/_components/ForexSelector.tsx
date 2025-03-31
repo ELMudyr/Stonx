@@ -98,7 +98,7 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
         console.log("Mapped Trade Data:", mappedTradeData);
         toast.success("New trade signal added!");
       } else {
-        toast.info("No trading recommendation available for current data");
+        toast.warning("No trading recommendation available for current data");
         // If no data received, we need to reset loading state ourselves
         onTradeData({
           position: "N/A",

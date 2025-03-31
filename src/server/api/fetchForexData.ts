@@ -30,33 +30,54 @@ export const fetchForexData = async (selectedPair: string): Promise<any> => {
     if (chartResult.status === "error" || chartResult.error) {
       throw new Error(chartResult.message || "Failed to fetch forex data");
     } else {
-      toast("Success", {
+      toast.success("Success", {
         description: `Fetched chart from ${startDate} to ${endDate}`,
       });
     }
     console.log(chartResult);
-    // Process with AI API and return the trade data
-    // const aiResult = await fetchAiResponse(chartResult);
-    // return aiResult;
 
     // Get Technical Indicators
     try {
-      const indicators = await fetchIndicators(selectedPair)
-      console.log(indicators)
-      if (indicators) {
-        // Get AI Analysis
-        try {
-          const aiResult = await geminiFetch(chartResult, indicators)
-          console.log("takeProfit: " + aiResult.takeProfit)
-          return aiResult
+      const indicatorsResults = await fetchIndicators(selectedPair)
+      console.log("Indicators: " + indicatorsResults.data)
 
-        } catch (error) {
-          console.error("Error fetching AI response:", error);
-        }
+      console.log("Response Code: ", indicatorsResults.data.rsi.response.code)
+      if (indicatorsResults.data.rsi.response.status === "ok") {
+        toast.success("Success", {
+          description: `Fetched Technical Indicators successfully`
+        });
+      } else if (indicatorsResults.data.rsi.response.code = "404") {
+        toast.warning("Warning", {
+          description: `Technical Indicators are not available for ${selectedPair}`
+        });
+      } else {
+        toast.warning("Error", {
+          description: `Could not Fetch technical Indicators`
+        });
+      }
+
+
+      // (JSON.stringify(results.data, null, 2))
+      const indicators = JSON.stringify(indicatorsResults.data, null, 2)
+      // Get AI Analysis
+      try {
+        const aiResult = await geminiFetch(chartResult, indicators)
+        console.log("takeProfit: " + aiResult.takeProfit)
+        return aiResult
+
+      } catch (error) {
+        console.error("Error fetching AI response:", error);
+        toast.error("Error", {
+          description: `Could not fetch AI response ${error}`
+        });
       }
     }
     catch (error) {
       console.log(error)
+
+      toast.error("Error", {
+        description: `Could not fetch Technical Indicators ${error}`
+      });
     }
 
 

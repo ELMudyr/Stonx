@@ -23,6 +23,7 @@ export default async function Home() {
         </main>
 
         <Toaster />
+        <Toaster richColors />
       </ThemeProvider>
     </>
   );
