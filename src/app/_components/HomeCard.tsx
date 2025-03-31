@@ -51,8 +51,8 @@ export default function HomeCard({ tradeData, onDelete }: HomeCardProps) {
         </div>
       </div>
       <div className="flex items-center mt-3 gap-12 justify-between">
-        <p className="text-xs text-muted-foreground w-64 line-clamp-2">
-          {description}
+        <p className="text-xs text-muted-foreground w-64 line-clamp-2"
+          dangerouslySetInnerHTML={{ __html: description }}>
         </p>
         <Link href={`/trade-details/${idURL}`} className="text-xs">
           Expand {'->'}
