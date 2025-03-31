@@ -86,6 +86,7 @@ const AnimatedBackground = () => {
   //
   useEffect(() => {
     const handleResize = () => {
+
       if (window.innerWidth < 874) {
         setCandleCount(30);
       } else {
@@ -107,11 +108,10 @@ const AnimatedBackground = () => {
     // The outer container now uses a grid background that spans the entire page.
     <>
       <div
-        className={`absolute  overflow-x-hidden -z-20 h-screen bg-gradient-to-b from-background/80 to-transparent  top-0 w-full `}>
-
+        className={`absolute  overflow-x-hidden -z-20 h-3/4 bg-gradient-to-b from-background/95 to-transparent  top-0 w-full `}>
       </div >
       {/* Candlesticks container */}
-      <div className="absolute -z-50 top-28  bg-background/20 w-2/3 m-auto h-48">
+      <div className="absolute -z-50 top-28  bg-background/20 w-screen sm:w-2/3 m-auto h-48">
         {chartData.map((candle, i) => {
           const bodyTopOriginal = 100 - Math.max(candle.open, candle.close);
           const bodyBottomOriginal = 100 - Math.min(candle.open, candle.close);
@@ -205,27 +205,27 @@ export const BackgroundGrid = () => {
   };
   return (
     <>
-      <div className="overflow-hidden -z-40 absolute h-screen w-screen top-0 left-0">
-        {
-          // Floating animation for icons
-          forexCryptoIcons.map((Icon, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-muted-foreground"
-              variants={floatingVariants}
-              initial="initial"
-              animate="animate"
-              custom={i}
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`
-              }}
-            >
-              <Icon size={14} />
-            </motion.div>
-          ))
-        }
-      </div>
+      {/* <div className="overflow-hidden -z-40 hidden bg-slate-900  w-screen top-0 left-0"> */}
+      {/*   { */}
+      {/*     // Floating animation for icons */}
+      {/*     forexCryptoIcons.map((Icon, i) => ( */}
+      {/*       <motion.div */}
+      {/*         key={i} */}
+      {/*         className="absolute text-muted-foreground" */}
+      {/*         variants={floatingVariants} */}
+      {/*         initial="initial" */}
+      {/*         animate="animate" */}
+      {/*         custom={i} */}
+      {/*         style={{ */}
+      {/*           top: `${Math.random() * 100}%`, */}
+      {/*           left: `${Math.random() * 100}%` */}
+      {/*         }} */}
+      {/*       > */}
+      {/*         <Icon size={14} /> */}
+      {/*       </motion.div> */}
+      {/*     )) */}
+      {/*   } */}
+      {/* </div> */}
     </>
   )
 }

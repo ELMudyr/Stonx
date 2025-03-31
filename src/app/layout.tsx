@@ -6,8 +6,8 @@ import { TRPCReactProvider } from "../trpc/react";
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import Nav from "./_components/components/ui/Nav";
-import ParticleBackground from "./_components/components/animations/ParticleBackground";
-import { StarsBackground } from "./_components/components/animations/StarsBackground";
+// import ParticleBackground from "./_components/components/animations/ParticleBackground";
+// import { StarsBackground } from "./_components/components/animations/StarsBackground";
 import AnimatedBackground, { BackgroundGrid } from "./_components/components/animations/bg-animation";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" >
-      <body className="fontfamily-sans min-h-screen  overflow-x-hidden  bg-background">
+      <body className="fontfamily-sans h-dvh  overflow-x-hidden  bg-background">
         <ThemeProvider attribute="class" defaultTheme="system" >
           <Nav />
           {/* <StarsBackground /> */}

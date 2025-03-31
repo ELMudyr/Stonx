@@ -71,28 +71,11 @@ const ForexSelector: React.FC<ForexSelectorProps> = ({ onTradeData, onFetchClick
   const handleFetchData = async () => {
     // Call the onFetchClick callback FIRST to set loading state
     onFetchClick();
-
     setButtonLoading(true);
+
     try {
       const apiResult = await fetchForexData(selectedPair);
       if (apiResult) {
-        // Map the API response keys to your expected TradeData keys
-        // const mappedTradeData: TradeData = {
-        //   position: apiResult.Position || "N/A",
-        //   entry: apiResult["Entry Point"] || 0,
-        //   takeProfit: apiResult["Take Profit"] || 0,
-        //   stopLoss: apiResult["Stop Loss"] || 0,
-        //   lotSize: apiResult["Lot size"] || 0,
-        //   risk: apiResult["Risk %"] || 0,
-        //   timeEst: apiResult.TimeEst || 0,
-        //   winRate: apiResult["Winrate %"] || 0,
-        //   description: apiResult.Description || "No description available",
-        //   profit: apiResult["Profit$"] || 0,
-        //   id: Date.now().toString(),
-        //   timestamp: Date.now(),
-        //   pair: selectedPair,
-        // };
-
         const mappedTradeData: TradeData = {
           position: apiResult.position || "N/A",
           entry: apiResult.entry || 0,
