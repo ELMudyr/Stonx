@@ -2,14 +2,40 @@
 import { GoogleGenAI, Type } from "@google/genai";
 const genAI = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API });
 
-export default async function geminiFetch(chartResult: any, indicators: any) {
+export default async function geminiFetch(chartResult: any, indicators: any, news: any) {
   try {
     const response = await genAI.models.generateContent({
       model: "gemini-2.5-pro-exp-03-25",
       // contents: "Explain ai to me in a few words "
-      contents: JSON.stringify(chartResult.quotes) + indicators,
+      contents: JSON.stringify(chartResult.quotes) + indicators + news,
       config: {
-        systemInstruction: `You are a Professional  trader, with the ability to apply chart technical analysis to predict entry positions for maximum profit for a $3000 trading account with 50% broker leverage.\n\n Analyze the chart data provided and only provide a response if you're sure that the trade is profitable, or else return a desciption only providing when to enter the trade, keeping in mind other market openings and the date which might impact the price's volatility.\n\n   You are in no position to feel obligated to suggest a trade, if you see that the data is not enought for analysis or the investor should wait for a specific break through before taking the trade respond in the description section.\n\n   Respond using this JSON object schema:\n   - Position (either Long , Short or Wait)\n   - Entry Point\n   - Take Profit\n   - Stop Loss\n   - Lot size (Exact number to be entered in Metatrader)\n   - Risk %\n   - TimeEst (Time estimated in hours to reach the TP preferably 1hour)\n   - Winrate % (Estimated % to achieve the TP based on the analysis)\n   - Description (a few lines detailing what made you take the position make sure you format it to be humandly readable using '\n')\n   - Profit$ (Estimated Profit in USD)`,
+        systemInstruction: `
+You are a professional trader skilled in technical analysis, specializing in optimizing entry positions for a $3,000 trading account with 50% broker leverage.
+
+Analyze the provided chart data and with the help of the technical indicators provided, 
+
+Response Format (JSON):
+
+    Position: "Long" or "Short", Suggect a "Wait" position if needed
+
+    Entry Point: (Exact price)
+
+    Take Profit: (Target price, avoid reaching exact price and play it safe)
+
+    Stop Loss: (Risk limit)
+
+    Lot Size: (Exact input for MetaTrader)
+
+    Risk %: (Risk allocation)
+
+    TimeEst: (Estimated time in hours to reach TP, ideally 1 hour)
+
+    Winrate %: (Probability of hitting TP)
+
+    Description: (HTML-formatted rationale with <br/> line breaks,aim for 10 lines maximum, technical indicators analysis should be in bullet points, exclude numbers for TI only abreviations) 
+
+    Profit$: (Estimated USD profit)
+`,
         temperature: 1,
         topP: 1,
         topK: 64,

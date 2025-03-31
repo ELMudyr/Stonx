@@ -3,6 +3,7 @@ import { env } from "../..//env.js";
 // import { fetchAiResponse } from "./fetchAiResponse";
 import geminiFetch from "./gemini";
 import fetchIndicators from "./fetchIndicators";
+import fetchNews from "./fetchNews"
 
 export const fetchForexData = async (selectedPair: string): Promise<any> => {
   const apiKey = env.NEXT_PUBLIC_TD_API;
@@ -55,29 +56,44 @@ export const fetchForexData = async (selectedPair: string): Promise<any> => {
           description: `Could not Fetch technical Indicators`
         });
       }
-
-
       // (JSON.stringify(results.data, null, 2))
       const indicators = JSON.stringify(indicatorsResults.data, null, 2)
-      // Get AI Analysis
-      try {
-        const aiResult = await geminiFetch(chartResult, indicators)
-        console.log("takeProfit: " + aiResult.takeProfit)
-        return aiResult
 
+      //Get News
+      try {
+        const newsResults = await fetchNews(selectedPair)
+        console.log("raw news: ", newsResults)
+        if (newsResults.status = "200") {
+          toast.success("Success", {
+            description: `Fetched News successfully`
+          });
+        } else {
+          toast.warning("Error", {
+            description: `Could not Fetch News`
+          });
+        }
+        const news = JSON.stringify(newsResults.feed, null, 2)
+        console.log("formated news: ", news)
+
+        // Get AI Analysis
+        try {
+          const aiResult = await geminiFetch(chartResult, indicators, news)
+          console.log("takeProfit: " + aiResult.takeProfit)
+          return aiResult
+
+        } catch (error) {
+          console.error("Error fetching AI response:", error);
+          toast.error("Error", {
+            description: `Could not fetch AI response ${error}`
+          });
+        }
       } catch (error) {
-        console.error("Error fetching AI response:", error);
-        toast.error("Error", {
-          description: `Could not fetch AI response ${error}`
-        });
+        console.log(error)
       }
+
     }
     catch (error) {
       console.log(error)
-
-      toast.error("Error", {
-        description: `Could not fetch Technical Indicators ${error}`
-      });
     }
 
 
