@@ -2,6 +2,7 @@ import { toast } from "sonner";
 import { env } from "../..//env.js";
 // import { fetchAiResponse } from "./fetchAiResponse";
 import geminiFetch from "./gemini";
+import fetchIndicators from "./fetchIndicators";
 
 export const fetchForexData = async (selectedPair: string): Promise<any> => {
   const apiKey = env.NEXT_PUBLIC_TD_API;
@@ -37,14 +38,28 @@ export const fetchForexData = async (selectedPair: string): Promise<any> => {
     // Process with AI API and return the trade data
     // const aiResult = await fetchAiResponse(chartResult);
     // return aiResult;
-    try {
-      const aiResult = await geminiFetch(chartResult)
-      console.log("takeProfit: " + aiResult.takeProfit)
-      return aiResult
 
-    } catch (error) {
-      console.error("Error fetching AI response:", error);
+    // Get Technical Indicators
+    try {
+      const indicators = await fetchIndicators(selectedPair)
+      console.log(indicators)
+      if (indicators) {
+        // Get AI Analysis
+        try {
+          const aiResult = await geminiFetch(chartResult, indicators)
+          console.log("takeProfit: " + aiResult.takeProfit)
+          return aiResult
+
+        } catch (error) {
+          console.error("Error fetching AI response:", error);
+        }
+      }
     }
+    catch (error) {
+      console.log(error)
+    }
+
+
   } catch (error) {
     throw new Error("Something went wrong while fetching forex data");
   }
