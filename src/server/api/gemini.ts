@@ -5,7 +5,7 @@ const genAI = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API });
 export default async function geminiFetch(chartResult: any, indicators: any, news: any) {
   try {
     const response = await genAI.models.generateContent({
-      model: "gemini-2.5-pro-exp-03-25",
+      model: "gemini-2.5-flash-preview-04-17",
       // contents: "Explain ai to me in a few words "
       contents: JSON.stringify(chartResult.quotes) + indicators + news,
       config: {
